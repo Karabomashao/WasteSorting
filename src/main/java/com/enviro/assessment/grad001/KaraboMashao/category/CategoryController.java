@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.KaraboMashao.category;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,12 +29,14 @@ public class CategoryController {
         return categoryRepository.findAllTypes();
     }
 
-//    @GetMapping("/waste-types/{category}")
-//        List<WasteType> findByCategory(@PathVariable String category){
-//            return categoryRepository.findTypeByCategory(category);
-//        }
    @GetMapping("/waste-types/search")
    List<WasteType> search(@RequestParam(required = false) String category){
         return categoryRepository.search(category);
+   }
+
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+   @DeleteMapping("/{id}")
+    void delete(@PathVariable int id){
+        categoryRepository.deleteCategory(id);
    }
 }

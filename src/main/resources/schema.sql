@@ -11,3 +11,13 @@ CREATE TABLE IF NOT EXISTS Waste_Types (
     classification_id INT,
     FOREIGN KEY (classification_id) REFERENCES Waste_classification (classification_id)
 );
+
+
+ALTER TABLE Waste_Types
+DROP CONSTRAINT CONSTRAINT_B1;
+
+ALTER TABLE Waste_Types
+ADD CONSTRAINT FK_Classification
+FOREIGN KEY (classification_id)
+REFERENCES Waste_classification (classification_id)
+ON DELETE CASCADE;

@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.KaraboMashao.category;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
 
 import java.util.List;
 import java.util.Optional;
@@ -68,4 +69,14 @@ public class CategoryRepository {
                 .query(WasteType.class)
                 .list();
     }
+
+    public void deleteCategory(int id){
+        var updated = jdbcClient.sql("DELETE FROM Waste_classification WHERE classification_id = :id")
+                .param("id", id)
+                .update();
+
+        Assert.state(updated == 1, "Failed to delete category " + id);
+    }
+
+
 }
