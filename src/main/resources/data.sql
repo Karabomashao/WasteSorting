@@ -1,13 +1,13 @@
 INSERT INTO Waste_classification(waste_classification, description)
 VALUES
     ('Hazardous', 'Pose a risk to health or the environment.'),
-    ('NON-HAZARDOUS', 'Does not pose a risk to health or the environment.'),
-    ('RECYCLABLE', 'Waste that can be processed for reuse'),
-    ('NON-RECYCLABLE', 'Waste that cannot be processed for reuse'),
-    ('E-WASTE', 'Electronic waste'),
-    ('ORGANIC WASTE', 'Biodegradable material'),
-    ('SPECIAL WASTE', 'Materials that require specific handling'),
-    ('CONSTRUCTION AND DEMOLITION WASTE', 'Debris and materials generated during the construction, renovation, or demolition of buildings and infrastructure');
+    ('Non-hazardous', 'Does not pose a risk to health or the environment.'),
+    ('Recyclable', 'Waste that can be processed for reuse'),
+    ('Non-recyclable', 'Waste that cannot be processed for reuse'),
+    ('E-waste', 'Electronic waste'),
+    ('Organic-waste', 'Biodegradable material'),
+    ('Special-waste', 'Materials that require specific handling'),
+    ('Construction-and-demolition-waste', 'Debris and materials generated during the construction, renovation, or demolition of buildings and infrastructure');
 
 INSERT INTO Waste_Types(type_of_waste, waste_examples, classification_id)
 VALUES
