@@ -1,76 +1,45 @@
 package com.enviro.assessment.grad001.KaraboMashao.controller;
 
-import com.enviro.assessment.grad001.KaraboMashao.category.Category;
-import com.enviro.assessment.grad001.KaraboMashao.category.CategoryRepository;
-import com.enviro.assessment.grad001.KaraboMashao.category.WasteType;
-import org.springframework.http.HttpStatus;
+import com.enviro.assessment.grad001.KaraboMashao.model.Categories;
+import com.enviro.assessment.grad001.KaraboMashao.service.CategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
-    public CategoryController(CategoryRepository categoryRepository){
-        this.categoryRepository = categoryRepository;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
-    @GetMapping("")
-    List<Category> findAll(){
-        return categoryRepository.findAll();
+
+    @GetMapping
+    public ResponseEntity<List<Categories>> getAllCategories() {
+        return ResponseEntity.ok(categoryService.findAllCategories());
     }
+
     @GetMapping("/{id}")
-    Optional<Category> findById(@PathVariable int id){
-        return categoryRepository.findById(id);
+    public ResponseEntity<Categories> getCategoryById(@PathVariable int id) {
+        return ResponseEntity.ok(categoryService.findCategoryById(id));
     }
 
-    @GetMapping("/waste-types")
-    List<WasteType> findAllTypes(){
-        return categoryRepository.findAllTypes();
+    @PostMapping
+    public ResponseEntity<Categories> createCategory(@RequestBody Categories category) {
+        return ResponseEntity.ok(categoryService.createCategory(category));
     }
 
-   @GetMapping("/waste-types/search")
-   List<WasteType> search(@RequestParam(required = false) String category){
-        return categoryRepository.search(category);
-   }
-
-   @ResponseStatus(HttpStatus.NO_CONTENT)
-   @DeleteMapping("/{id}")
-    void delete(@PathVariable int id){
-        categoryRepository.deleteCategory(id);
-   }
-
-   @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("")
-    void create(@RequestBody Category category){
-        categoryRepository.createCategory(category);
-   }
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/waste-types")
-    void createWasteType(@RequestBody WasteType wasteType){
-        categoryRepository.createWasteType(wasteType);
-   }
-
-   @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("waste-types/{id}")
-    void deleteWasteTypes(@PathVariable int id){
-        categoryRepository.deleteWasteType(id);
-   }
-
-   @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void updateCreate(@RequestBody Category category, @PathVariable int id){
-        categoryRepository.updateCategory(category, id);
-   }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/waste-types/{id}")
-    void updateWasteType(@RequestBody WasteType wasteType, @PathVariable int id){
-        categoryRepository.updateWasteType(wasteType, id);
+    public ResponseEntity<Categories> updateCategory(@PathVariable int id, @RequestBody Categories category) {
+        return ResponseEntity.ok(categoryService.updateCategory(id, category));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable int id) {
+        categoryService.deleteCategory(id);
+        return ResponseEntity.noContent().build();
+    }
 }

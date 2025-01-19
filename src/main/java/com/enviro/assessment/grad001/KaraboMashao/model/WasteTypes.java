@@ -15,7 +15,7 @@ public class WasteTypes {
 
     @ManyToOne
     @JoinColumn(name = "categoryId", nullable = false)
-    private WasteTypes wasteTypes;
+    private Categories categories;
 
     public int getWasteId() {
         return wasteId;
@@ -29,9 +29,9 @@ public class WasteTypes {
         return wasteExample;
     }
 
-    public WasteTypes getWasteTypes() {
-        return wasteTypes;
-    }
+//    public WasteTypes getWasteTypes() {
+//        return wasteTypes;
+//    }
 
     public void setTypeOfWaste(String typeOfWaste) {
         this.typeOfWaste = typeOfWaste;
