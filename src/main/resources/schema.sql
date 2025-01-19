@@ -12,6 +12,14 @@ CREATE TABLE IF NOT EXISTS Waste_Types (
     FOREIGN KEY (classification_id) REFERENCES Waste_classification (classification_id)
 );
 
+-- CREATE TABLE IF NOT EXISTS disposal_guidelines (
+--     guideline_id INT AUTO_INCREMENT PRIMARY KEY,
+--     disposal_description TEXT,
+--     disposal_location TEXT,
+--     waste_id INT,
+--     FOREIGN KEY (waste_id) REFERENCES Waste_Types (waste_id)
+-- );
+
 
 ALTER TABLE Waste_Types
 DROP CONSTRAINT CONSTRAINT_B1;

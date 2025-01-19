@@ -1,5 +1,8 @@
-package com.enviro.assessment.grad001.KaraboMashao.category;
+package com.enviro.assessment.grad001.KaraboMashao.controller;
 
+import com.enviro.assessment.grad001.KaraboMashao.category.Category;
+import com.enviro.assessment.grad001.KaraboMashao.category.CategoryRepository;
+import com.enviro.assessment.grad001.KaraboMashao.category.WasteType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
