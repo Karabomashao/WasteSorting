@@ -39,4 +39,35 @@ public class CategoryController {
     void delete(@PathVariable int id){
         categoryRepository.deleteCategory(id);
    }
+
+   @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("")
+    void create(@RequestBody Category category){
+        categoryRepository.createCategory(category);
+   }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/waste-types")
+    void createWasteType(@RequestBody WasteType wasteType){
+        categoryRepository.createWasteType(wasteType);
+   }
+
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("waste-types/{id}")
+    void deleteWasteTypes(@PathVariable int id){
+        categoryRepository.deleteWasteType(id);
+   }
+
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    void updateCreate(@RequestBody Category category, @PathVariable int id){
+        categoryRepository.updateCategory(category, id);
+   }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/waste-types/{id}")
+    void updateWasteType(@RequestBody WasteType wasteType, @PathVariable int id){
+        categoryRepository.updateWasteType(wasteType, id);
+    }
+
 }

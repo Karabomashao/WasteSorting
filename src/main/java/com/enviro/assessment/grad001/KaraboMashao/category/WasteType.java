@@ -5,6 +5,7 @@ public record WasteType(
         String type_of_waste,
         String  waste_examples,
         String waste_classification,
-        String description
+        int classification_id
+
         ) {
 }
