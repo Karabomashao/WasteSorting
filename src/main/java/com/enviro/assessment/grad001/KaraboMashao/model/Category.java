@@ -9,12 +9,9 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-
     private int categoryId;
     private String wasteCategory;
     private String description;
-
-
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<WasteType> wasteTypes;

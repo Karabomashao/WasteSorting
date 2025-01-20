@@ -2,20 +2,27 @@ package com.enviro.assessment.grad001.KaraboMashao.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "waste_types")
 public class WasteType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int wasteId;
+
+
     private String typeOfWaste;
     private String wasteExample;
 
     @ManyToOne
     @JoinColumn(name = "categoryId", nullable = false)
     private Category category;
+
+    @OneToMany(mappedBy = "wasteType", cascade = CascadeType.ALL)
+    private List<DisposalGuideline> disposalGuidelineList;
+
 
     public int getWasteId() {
         return wasteId;
