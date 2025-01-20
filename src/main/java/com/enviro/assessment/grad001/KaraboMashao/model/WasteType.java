@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "waste_types")
-public class WasteTypes {
+public class WasteType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class WasteTypes {
 
     @ManyToOne
     @JoinColumn(name = "categoryId", nullable = false)
-    private Categories categories;
+    private Category category;
 
     public int getWasteId() {
         return wasteId;
@@ -29,9 +29,9 @@ public class WasteTypes {
         return wasteExample;
     }
 
-//    public WasteTypes getWasteTypes() {
-//        return wasteTypes;
-//    }
+    public Category getCategory() {
+        return category;
+    }
 
     public void setTypeOfWaste(String typeOfWaste) {
         this.typeOfWaste = typeOfWaste;
@@ -39,5 +39,9 @@ public class WasteTypes {
 
     public void setWasteExample(String wasteExample) {
         this.wasteExample = wasteExample;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

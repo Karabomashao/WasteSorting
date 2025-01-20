@@ -1,6 +1,6 @@
 package com.enviro.assessment.grad001.KaraboMashao.controller;
 
-import com.enviro.assessment.grad001.KaraboMashao.model.Categories;
+import com.enviro.assessment.grad001.KaraboMashao.model.Category;
 import com.enviro.assessment.grad001.KaraboMashao.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,22 +18,22 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Categories>> getAllCategories() {
+    public ResponseEntity<List<Category>> getAllCategories() {
         return ResponseEntity.ok(categoryService.findAllCategories());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categories> getCategoryById(@PathVariable int id) {
+    public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
         return ResponseEntity.ok(categoryService.findCategoryById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Categories> createCategory(@RequestBody Categories category) {
+    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Categories> updateCategory(@PathVariable int id, @RequestBody Categories category) {
+    public ResponseEntity<Category> updateCategory(@PathVariable int id, @RequestBody Category category) {
         return ResponseEntity.ok(categoryService.updateCategory(id, category));
     }
 

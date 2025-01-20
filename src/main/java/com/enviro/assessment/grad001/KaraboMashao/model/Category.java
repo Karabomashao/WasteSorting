@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "waste_categories")
-public class Categories {
+public class Category {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -14,8 +14,8 @@ public class Categories {
     private String wasteCategory;
 
 
-    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
-    private List<WasteTypes> wasteTypes;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<WasteType> wasteTypes;
 
     public int getCategoryId() {
         return categoryId;
