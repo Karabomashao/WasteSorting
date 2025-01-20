@@ -29,7 +29,8 @@ public class WasteTypeService {
     }
 
     public List<WasteType> findWasteTypesByCategory(String wasteCategory) {
-        return wasteTypeRepository.findByWasteCategory(wasteCategory);
+        // Assuming "findByCategory_WasteCategory" is a valid query in WasteTypeRepository
+        return wasteTypeRepository.findByCategory_WasteCategory(wasteCategory);
     }
 
     public WasteType createWasteType(WasteType wasteType) {

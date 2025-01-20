@@ -12,6 +12,8 @@ public class Category {
 
     private int categoryId;
     private String wasteCategory;
+    private String description;
+
 
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
@@ -28,7 +30,6 @@ public class Category {
         return description;
     }
 
-    private String description;
 
     public void setWasteCategory(String waste_category) {
         this.wasteCategory = waste_category;

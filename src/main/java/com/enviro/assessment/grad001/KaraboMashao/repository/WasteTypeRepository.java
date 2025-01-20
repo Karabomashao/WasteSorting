@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface WasteTypeRepository extends JpaRepository<WasteType, Integer> {
-    List<WasteType> findByWasteCategory(String wasteCategory);
+    List<WasteType> findByCategory_WasteCategory(String wasteCategory);
 }
