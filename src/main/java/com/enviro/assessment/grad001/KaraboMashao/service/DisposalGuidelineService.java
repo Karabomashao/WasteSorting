@@ -36,15 +36,10 @@ public class DisposalGuidelineService {
     }
 
     public DisposalGuideline createDisposalGuideline(DisposalGuideline guideline) {
-        // Validate WasteType and Category exist
         WasteType wasteType = wasteTypeRepository.findById(guideline.getWasteType().getWasteId())
-                .orElseThrow(() -> new IllegalArgumentException("WasteType not found"));
-
-        Category category = categoryRepository.findById(guideline.getCategory().getCategoryId())
-                .orElseThrow(() -> new IllegalArgumentException("Category not found"));
+                .orElseThrow(() -> new RuntimeException("WasteType not found"));
 
         guideline.setWasteType(wasteType);
-        guideline.setCategory(category);
 
         return disposalGuidelineRepository.save(guideline);
     }

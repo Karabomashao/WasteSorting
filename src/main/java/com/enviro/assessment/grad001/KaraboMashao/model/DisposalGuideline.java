@@ -22,6 +22,7 @@ public class DisposalGuideline {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+
     // Getters and Setters
     public int getDisposalGuidelineId() {
         return disposalGuidelineId;

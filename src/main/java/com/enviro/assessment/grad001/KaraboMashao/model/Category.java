@@ -16,6 +16,12 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<WasteType> wasteTypes;
 
+    public Category() {}
+    public Category(String wasteCategory, String description) {
+        this.wasteCategory = wasteCategory;
+        this.description = description;
+    }
+
     public int getCategoryId() {
         return categoryId;
     }
@@ -34,5 +40,9 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

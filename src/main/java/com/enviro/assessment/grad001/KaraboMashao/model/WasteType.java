@@ -12,7 +12,6 @@ public class WasteType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wasteId;
 
-
     private String typeOfWaste;
     private String wasteExample;
 
