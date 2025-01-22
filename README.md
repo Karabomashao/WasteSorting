@@ -20,7 +20,7 @@ It supports CRUD operations and enforces validation rules to ensure data consist
 - **GET /api/disposal-guidelines**: Retrieve disposal guidelines.
 - **GET /api/categories**: Retrieve all categories.
 - **GET /api/categories/{id}**: Retrieve all categories by id.
-- **GET /api/*recycling-tips*: Retrieve all recycling tips.
+- **GET /api/recycling-tips**: Retrieve all recycling tips.
 - **GET /api/recycling-tips{id}**: Retrieve recycling tips by id.
 
 - **POST /api/waste-types**: Add a new waste type.
@@ -62,7 +62,7 @@ POST /api//api/disposal-guidelines
 {
   "disposalMethod": "Local hazardous waste facilities.,
   "location": "Drop off at hazardous waste collection sites.",
-  "wasteId" : {
+  "wasteType" : {
     "wasteId" : 1
   }
 }
@@ -73,7 +73,7 @@ POST /api//api/recycling-tips
   "additionalInfo": "Shredded paper can often be composted or taken to specialized recycling centers.",
   "material": "Paper",
   "tipDescription" : "Flatten boxes and remove tape or stickers."
-  "wasteId" : {
+  "wasteType" : {
     "wasteId" : 1
   }
 }
