@@ -29,12 +29,10 @@ public class WasteTypeService {
     }
 
     public List<WasteType> findWasteTypesByCategory(String wasteCategory) {
-        // Assuming "findByCategory_WasteCategory" is a valid query in WasteTypeRepository
         return wasteTypeRepository.findByCategory_WasteCategory(wasteCategory);
     }
 
     public WasteType createWasteType(WasteType wasteType) {
-        // Validate that the category exists
         Category category = categoryRepository.findById(wasteType.getCategory().getCategoryId())
                 .orElseThrow(() -> new IllegalArgumentException("Category not found"));
 

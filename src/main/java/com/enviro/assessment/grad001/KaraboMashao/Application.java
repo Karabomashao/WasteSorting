@@ -22,8 +22,8 @@ public class Application {
 	@Bean
 	CommandLineRunner initializeDatabase(
 			CategoryRepository categoryRepository,
-			WasteTypeRepository wasteTypeRepository,
-			DisposalGuidelineRepository disposalGuidelineRepository) {
+			WasteTypeRepository wasteTypeRepository){
+//			DisposalGuidelineRepository disposalGuidelineRepository) {
 		return args -> {
 
 
@@ -50,6 +50,16 @@ public class Application {
 			wasteTypeRepository.save(plastic);
 			wasteTypeRepository.save(glass);
 			wasteTypeRepository.save(paper);
+
+//			WasteType glass_ = new WasteType("Glass", "Glass bottles");
+//
+//			DisposalGuideline glassDisposal = new DisposalGuideline();
+//			glassDisposal.setDisposalMethod("Throw in bin");
+//			glassDisposal.setLocation("Glass centres");
+//			glassDisposal.setCategory(recyclable);
+//			glassDisposal.setWasteType(glass);
+
+//			disposalGuidelineRepository.save(glassDisposal);
 
 		};
 	}

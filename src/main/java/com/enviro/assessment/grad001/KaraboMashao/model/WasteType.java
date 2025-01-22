@@ -22,6 +22,12 @@ public class WasteType {
     @OneToMany(mappedBy = "wasteType", cascade = CascadeType.ALL)
     private List<DisposalGuideline> disposalGuidelineList;
 
+    public WasteType(String typeOfWaste, String wasteExample){
+        this.typeOfWaste = typeOfWaste;
+        this.wasteExample = wasteExample;
+    }
+
+    public WasteType(){}
 
     public int getWasteId() {
         return wasteId;

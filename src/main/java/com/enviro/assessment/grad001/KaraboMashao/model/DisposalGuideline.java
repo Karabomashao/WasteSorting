@@ -24,7 +24,7 @@ public class DisposalGuideline {
 
 
     // Getters and Setters
-    public int getDisposalGuidelineId() {
+    public long getDisposalGuidelineId() {
         return disposalGuidelineId;
     }
 
