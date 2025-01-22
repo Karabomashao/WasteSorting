@@ -29,7 +29,7 @@ import java.util.List;
 
         @GetMapping("/category/{category}")
         public ResponseEntity<List<WasteType>> getWasteTypesByCategory(@PathVariable String category) {
-            return ResponseEntity.ok(wasteTypeService.findWasteTypesByCategory(category));
+            return ResponseEntity.ok(wasteTypeService.findWasteTypesByCategory(category.toLowerCase()));
         }
 
         @PostMapping

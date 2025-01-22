@@ -32,8 +32,8 @@ public class WasteType {
     private List<RecyclingTip> recyclingTipList;
 
     public WasteType(String typeOfWaste, String wasteExample){
-        this.typeOfWaste = typeOfWaste;
-        this.wasteExample = wasteExample;
+        this.typeOfWaste = typeOfWaste.toLowerCase();
+        this.wasteExample = wasteExample.toLowerCase();
     }
 
     public WasteType(){}
@@ -43,11 +43,11 @@ public class WasteType {
     }
 
     public String getTypeOfWaste() {
-        return typeOfWaste;
+        return typeOfWaste.toLowerCase();
     }
 
     public String getWasteExample() {
-        return wasteExample;
+        return wasteExample.toLowerCase();
     }
 
     public Category getCategory() {
@@ -59,7 +59,7 @@ public class WasteType {
     }
 
     public void setWasteExample(String wasteExample) {
-        this.wasteExample = wasteExample;
+        this.wasteExample = wasteExample.toLowerCase();
     }
 
     public void setCategory(Category category) {

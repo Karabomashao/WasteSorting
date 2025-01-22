@@ -28,28 +28,28 @@ public class Category {
 
     public Category() {}
     public Category(String wasteCategory, String description) {
-        this.wasteCategory = wasteCategory;
-        this.description = description;
+        this.wasteCategory = wasteCategory.toLowerCase();
+        this.description = description.toLowerCase();
     }
 
     public int getCategoryId() {
         return categoryId;
     }
     public String getWasteCategory() {
-        return wasteCategory;
+        return wasteCategory.toLowerCase();
     }
 
     public String getDescription() {
-        return description;
+        return description.toLowerCase();
     }
 
 
     public void setWasteCategory(String waste_category) {
-        this.wasteCategory = waste_category;
+        this.wasteCategory = waste_category.toLowerCase();
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description.toLowerCase();
     }
 
 }

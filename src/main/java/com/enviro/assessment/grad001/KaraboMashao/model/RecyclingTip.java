@@ -36,11 +36,11 @@ public class RecyclingTip {
     }
 
     public String getTipDescription() {
-        return tipDescription;
+        return tipDescription.toLowerCase();
     }
 
     public void setTipDescription(String tipDescription) {
-        this.tipDescription = tipDescription;
+        this.tipDescription = tipDescription.toLowerCase();
     }
 
     public String getMaterial() {
@@ -48,15 +48,15 @@ public class RecyclingTip {
     }
 
     public void setMaterial(String material) {
-        this.material = material;
+        this.material = material.toLowerCase();
     }
 
     public String getAdditionalInfo() {
-        return additionalInfo;
+        return additionalInfo.toLowerCase();
     }
 
     public void setAdditionalInfo(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
+        this.additionalInfo = additionalInfo.toLowerCase();
     }
 
     public WasteType getWasteType() {

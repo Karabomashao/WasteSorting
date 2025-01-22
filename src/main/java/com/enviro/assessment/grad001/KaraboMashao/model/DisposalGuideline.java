@@ -34,19 +34,19 @@ public class DisposalGuideline {
     }
 
     public String getDisposalMethod() {
-        return disposalMethod;
+        return disposalMethod.toLowerCase();
     }
 
     public void setDisposalMethod(String disposalMethod) {
-        this.disposalMethod = disposalMethod;
+        this.disposalMethod = disposalMethod.toLowerCase();
     }
 
     public String getLocation() {
-        return location;
+        return location.toLowerCase();
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        this.location = location.toLowerCase();
     }
 
     public WasteType getWasteType() {
