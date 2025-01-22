@@ -1,6 +1,8 @@
 package com.enviro.assessment.grad001.KaraboMashao.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.List;
 
 @Entity
@@ -11,8 +13,11 @@ public class WasteType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wasteId;
 
+    @NotBlank(message = "Type of waste cannot be blank")
     @Column(nullable = false, unique = true)
     private String typeOfWaste;
+
+    @NotBlank(message = "Waste example of waste cannot be blank")
     @Column(nullable = false)
     private String wasteExample;
 

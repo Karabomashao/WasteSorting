@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.KaraboMashao.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,6 +82,16 @@ public class GlobalExceptionHandler {
 
         String message = "Request method 'POST' is not supported";
         ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode().toString(), message, LocalDateTime.now(),
+                request.getRequestURI());
+        return new ResponseEntity<>(errorResponse, HttpStatus.METHOD_NOT_ALLOWED);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex, HttpServletRequest request) {
+        ex.printStackTrace();
+
+        String message = "Constraints are violated";
+        ErrorResponse errorResponse = new ErrorResponse(ex.getConstraintViolations().toString(), message, LocalDateTime.now(),
                 request.getRequestURI());
         return new ResponseEntity<>(errorResponse, HttpStatus.METHOD_NOT_ALLOWED);
     }

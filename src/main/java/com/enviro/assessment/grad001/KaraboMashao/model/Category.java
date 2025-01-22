@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.KaraboMashao.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
@@ -13,7 +14,10 @@ public class Category {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int categoryId;
     @Column(unique=true, nullable = false)
+    @NotBlank(message = "Waste category cannot be blank")
     private String wasteCategory;
+
+    @NotBlank(message = "Description cannot be blank")
     @Column(nullable = false)
 //    @Size(min = 20)
     private String description;

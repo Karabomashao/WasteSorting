@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.KaraboMashao.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table (name = "Recycling_tip")
@@ -10,12 +11,15 @@ public class RecyclingTip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tipId;
 
+    @NotBlank(message = "Tip description cannot be blank")
     @Column(nullable = false)
     private String tipDescription;
 
+    @NotBlank(message = "Material cannot be blank")
     @Column(nullable = false)
     private String material;
 
+    @NotBlank(message = "Additional info cannot be blank")
     @Column(nullable = false)
     private String additionalInfo;
 
