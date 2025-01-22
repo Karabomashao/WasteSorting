@@ -60,7 +60,7 @@ POST /api//api/waste-types
 POST /api//api/disposal-guidelines
 
 {
-  "disposalMethod": "Local hazardous waste facilities.,
+  "disposalMethod": "Local hazardous waste facilities.",
   "location": "Drop off at hazardous waste collection sites.",
   "wasteType" : {
     "wasteId" : 1
