@@ -23,6 +23,9 @@ public class WasteType {
     @OneToMany(mappedBy = "wasteType", cascade = CascadeType.ALL)
     private List<DisposalGuideline> disposalGuidelineList;
 
+    @OneToMany(mappedBy = "wasteType", cascade = CascadeType.ALL)
+    private List<RecyclingTip> recyclingTipList;
+
     public WasteType(String typeOfWaste, String wasteExample){
         this.typeOfWaste = typeOfWaste;
         this.wasteExample = wasteExample;

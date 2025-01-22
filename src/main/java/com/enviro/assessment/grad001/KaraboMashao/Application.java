@@ -2,9 +2,11 @@ package com.enviro.assessment.grad001.KaraboMashao;
 
 import com.enviro.assessment.grad001.KaraboMashao.model.Category;
 import com.enviro.assessment.grad001.KaraboMashao.model.DisposalGuideline;
+import com.enviro.assessment.grad001.KaraboMashao.model.RecyclingTip;
 import com.enviro.assessment.grad001.KaraboMashao.model.WasteType;
 import com.enviro.assessment.grad001.KaraboMashao.repository.CategoryRepository;
 import com.enviro.assessment.grad001.KaraboMashao.repository.DisposalGuidelineRepository;
+import com.enviro.assessment.grad001.KaraboMashao.repository.RecyclingTipRepository;
 import com.enviro.assessment.grad001.KaraboMashao.repository.WasteTypeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +25,8 @@ public class Application {
 	CommandLineRunner initializeDatabase(
 			CategoryRepository categoryRepository,
 			WasteTypeRepository wasteTypeRepository,
-			DisposalGuidelineRepository disposalGuidelineRepository){
+			DisposalGuidelineRepository disposalGuidelineRepository,
+			RecyclingTipRepository recyclingTipRepository){
 		return args -> {
 
 
@@ -62,6 +65,13 @@ public class Application {
 
 			disposalGuidelineRepository.save(batteryDisposal);
 
+			RecyclingTip recyclingTip = new RecyclingTip();
+			recyclingTip.setWasteType(battery);
+			recyclingTip.setTipDescription("Sort batteries into categories like single-use.");
+			recyclingTip.setAdditionalInfo("Never dispose of batteries in regular household trash as they can leak harmful chemicals into the environment.");
+			recyclingTip.setMaterial("alkaline");
+
+			recyclingTipRepository.save(recyclingTip);
 		};
 	}
 }

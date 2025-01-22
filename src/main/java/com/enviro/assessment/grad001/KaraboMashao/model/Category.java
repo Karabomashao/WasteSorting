@@ -16,6 +16,7 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<WasteType> wasteTypes;
 
+
     public Category() {}
     public Category(String wasteCategory, String description) {
         this.wasteCategory = wasteCategory;
