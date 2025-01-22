@@ -50,7 +50,7 @@ POST /api//api/categories
 POST /api//api/waste-types
 
 {
-  "wasteType": "Chemicals",
+  "typeOfWaste": "Chemicals",
   "wasteExample": "Acid",
   "category" : {
     "categoryId" : 1
