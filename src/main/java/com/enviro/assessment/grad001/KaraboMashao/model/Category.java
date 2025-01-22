@@ -1,6 +1,8 @@
 package com.enviro.assessment.grad001.KaraboMashao.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 @Entity
@@ -13,6 +15,7 @@ public class Category {
     @Column(unique=true, nullable = false)
     private String wasteCategory;
     @Column(nullable = false)
+//    @Size(min = 20)
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
