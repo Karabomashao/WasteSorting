@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundExceptions.class)
     public ResponseEntity<Object> handleNotFoundException(NotFoundExceptions ex, HttpServletRequest request) {
-        ErrorResponse errorResponse = new ErrorResponse("NOT_FOUND", ex.getMessage(), LocalDateTime.now(), request.getRequestURI());
+        ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode().toString(), ex.getMessage(), LocalDateTime.now(), request.getRequestURI());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
         ex.printStackTrace();
 
         String message = "URL endpoint does not exist";
-        ErrorResponse errorResponse = new ErrorResponse("No_Resource_Found_Exception", message, LocalDateTime.now(),
+        ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode().toString(), message, LocalDateTime.now(),
                 request.getRequestURI());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
@@ -70,7 +70,7 @@ public class GlobalExceptionHandler {
         ex.printStackTrace();
 
         String message = "Invalid type";
-        ErrorResponse errorResponse = new ErrorResponse("Method_Argument_Type_Mismatch_Exception", message, LocalDateTime.now(),
+        ErrorResponse errorResponse = new ErrorResponse( "Method_Argument_Type_Mismatch_Exception", message, LocalDateTime.now(),
                 request.getRequestURI());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
@@ -80,7 +80,7 @@ public class GlobalExceptionHandler {
         ex.printStackTrace();
 
         String message = "Request method 'POST' is not supported";
-        ErrorResponse errorResponse = new ErrorResponse("Http_Request_Method_Not_Supported_Exception", message, LocalDateTime.now(),
+        ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode().toString(), message, LocalDateTime.now(),
                 request.getRequestURI());
         return new ResponseEntity<>(errorResponse, HttpStatus.METHOD_NOT_ALLOWED);
     }
