@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.KaraboMashao.service;
 
+import com.enviro.assessment.grad001.KaraboMashao.exceptions.NotFoundExceptions;
 import com.enviro.assessment.grad001.KaraboMashao.model.WasteType;
 import com.enviro.assessment.grad001.KaraboMashao.repository.RecyclingTipRepository;
 import com.enviro.assessment.grad001.KaraboMashao.repository.WasteTypeRepository;
@@ -27,7 +28,7 @@ public class RecyclingTipService {
 
     public RecyclingTip findRecyclingTipById(int id){
         return recyclingTipRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "WasteType not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Recycling tip not found with id: " + id));
     }
 
     public RecyclingTip saveRecyclingTip(RecyclingTip recyclingTip){
@@ -36,10 +37,10 @@ public class RecyclingTipService {
 
     public RecyclingTip updateRecyclingTip(int id, RecyclingTip updateRecyclingTip){
         RecyclingTip existingRecyclingTip = recyclingTipRepository.findById(updateRecyclingTip.getTipId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "RecyclingTip not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Recycling tip not found with id: " + id));
 
         WasteType existingWasteType = wasteTypeRepository.findById(updateRecyclingTip.getWasteType().getWasteId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "WasteType not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Waste tip not found with id: " + id));
 
         existingRecyclingTip.setTipDescription(updateRecyclingTip.getTipDescription());
         existingRecyclingTip.setMaterial(updateRecyclingTip.getMaterial());
@@ -51,7 +52,7 @@ public class RecyclingTipService {
 
     public void deleteRecyclingTipById(int id){
         RecyclingTip recyclingTip = recyclingTipRepository.findById(id)
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "RecyclingTip not found with id: " + id));
+                        .orElseThrow(() -> new NotFoundExceptions("Recycling tip not found with id: " + id));
         recyclingTipRepository.deleteById(id);
     }
 }

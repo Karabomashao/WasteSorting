@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.KaraboMashao.service;
 
+import com.enviro.assessment.grad001.KaraboMashao.exceptions.NotFoundExceptions;
 import com.enviro.assessment.grad001.KaraboMashao.model.DisposalGuideline;
 import com.enviro.assessment.grad001.KaraboMashao.model.WasteType;
 import com.enviro.assessment.grad001.KaraboMashao.repository.DisposalGuidelineRepository;
@@ -30,22 +31,22 @@ public class DisposalGuidelineService {
 
     public DisposalGuideline findGuidelineById(int id) {
         return disposalGuidelineRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Disposal Guideline not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Disposal Guideline not found with id: " + id));
     }
 
     public DisposalGuideline createDisposalGuideline(DisposalGuideline guideline) {
         WasteType wasteType = wasteTypeRepository.findById(guideline.getWasteType().getWasteId())
-                .orElseThrow(() -> new RuntimeException("WasteType not found"));
+                .orElseThrow(() -> new NotFoundExceptions("Waste type not found"));
 
         return disposalGuidelineRepository.save(guideline);
     }
 
     public DisposalGuideline updateDisposalGuideline(int id, DisposalGuideline updatedGuideline) {
         DisposalGuideline existingGuideline = disposalGuidelineRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Disposal Guideline not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Disposal Guideline not found with id: " + id));
 
         WasteType wasteType = wasteTypeRepository.findById(updatedGuideline.getWasteType().getWasteId())
-                .orElseThrow(() -> new IllegalArgumentException("WasteType not found"));
+                .orElseThrow(() -> new NotFoundExceptions("Waste type not found"));
 
         existingGuideline.setDisposalMethod(updatedGuideline.getDisposalMethod());
         existingGuideline.setLocation(updatedGuideline.getLocation());
@@ -56,7 +57,7 @@ public class DisposalGuidelineService {
 
     public void deleteDisposalGuideline(int id) {
         DisposalGuideline guideline = disposalGuidelineRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Disposal Guideline not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Disposal Guideline not found with id: " + id));
         disposalGuidelineRepository.delete(guideline);
     }
 }

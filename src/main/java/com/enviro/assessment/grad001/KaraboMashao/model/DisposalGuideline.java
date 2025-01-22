@@ -10,8 +10,10 @@ public class DisposalGuideline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int disposalGuidelineId;
 
+    @Column(nullable = false)
     private String disposalMethod;
 
+    @Column(nullable = false)
     private String location;
 
     @ManyToOne

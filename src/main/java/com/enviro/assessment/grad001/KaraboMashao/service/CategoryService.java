@@ -1,8 +1,11 @@
 package com.enviro.assessment.grad001.KaraboMashao.service;
 
+import com.enviro.assessment.grad001.KaraboMashao.exceptions.NotFoundExceptions;
 import com.enviro.assessment.grad001.KaraboMashao.model.Category;
 import com.enviro.assessment.grad001.KaraboMashao.repository.CategoryRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,7 +24,7 @@ public class CategoryService {
 
     public Category findCategoryById(int id) {
         return categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Category not found with id: " + id));
     }
 
     public Category createCategory(Category category) {
@@ -30,7 +33,7 @@ public class CategoryService {
 
     public Category updateCategory(int id, Category category) {
         Category existingCategory = categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Category not found with id: " + id));
 
         existingCategory.setWasteCategory(category.getWasteCategory());
         existingCategory.setDescription(category.getDescription());
@@ -39,7 +42,7 @@ public class CategoryService {
 
     public void deleteCategory(int id) {
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found with id: " + id));
+                .orElseThrow(() -> new NotFoundExceptions("Category not found with id: " + id));
         categoryRepository.delete(category);
     }
 }

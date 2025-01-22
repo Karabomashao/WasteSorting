@@ -10,7 +10,9 @@ public class Category {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int categoryId;
+    @Column(unique=true, nullable = false)
     private String wasteCategory;
+    @Column(nullable = false)
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)

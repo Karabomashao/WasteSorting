@@ -1,8 +1,6 @@
 package com.enviro.assessment.grad001.KaraboMashao.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -13,7 +11,9 @@ public class WasteType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wasteId;
 
+    @Column(nullable = false, unique = true)
     private String typeOfWaste;
+    @Column(nullable = false)
     private String wasteExample;
 
     @ManyToOne

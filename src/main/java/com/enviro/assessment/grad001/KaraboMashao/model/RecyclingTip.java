@@ -9,8 +9,14 @@ public class RecyclingTip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tipId;
+
+    @Column(nullable = false)
     private String tipDescription;
+
+    @Column(nullable = false)
     private String material;
+
+    @Column(nullable = false)
     private String additionalInfo;
 
     @ManyToOne
