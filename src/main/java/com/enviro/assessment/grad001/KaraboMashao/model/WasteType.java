@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.KaraboMashao.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;

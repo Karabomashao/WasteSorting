@@ -22,44 +22,45 @@ public class Application {
 	@Bean
 	CommandLineRunner initializeDatabase(
 			CategoryRepository categoryRepository,
-			WasteTypeRepository wasteTypeRepository){
-//			DisposalGuidelineRepository disposalGuidelineRepository) {
+			WasteTypeRepository wasteTypeRepository,
+			DisposalGuidelineRepository disposalGuidelineRepository){
 		return args -> {
 
 
-			Category recyclable = categoryRepository.save(new Category("Recyclable", "test"));
-			Category hazardous = categoryRepository.save(new Category("Hazardous", "test"));
-			Category organic = categoryRepository.save(new Category("Organic", "test"));
-
-			WasteType plastic = new WasteType();
-			plastic.setTypeOfWaste("Plastic");
-			plastic.setWasteExample("Plastic bottles");
-			plastic.setCategory(recyclable); // Link to category
-
-			WasteType glass = new WasteType();
-			glass.setTypeOfWaste("Glass");
-			glass.setWasteExample("Glass bottles");
-			glass.setCategory(hazardous); // Link to category
+			Category recyclable = categoryRepository.save(new Category("Recyclable",
+					"Materials that can be processed and reused"));
+			Category hazardous = categoryRepository.save(new Category("Hazardous",
+					"Waste that poses substantial or potential threats to public health or the environment"));
+			Category organic = categoryRepository.save(new Category("Organic",
+					"Biodegradable waste that comes from living organisms, such as food scraps, yard clippings, and paper."));
 
 			WasteType paper = new WasteType();
 			paper.setTypeOfWaste("Paper");
-			paper.setWasteExample("Newspapers");
-			paper.setCategory(organic); // Link to category
+			paper.setWasteExample("newspapers, magazines, cardboard");
+			paper.setCategory(recyclable); // Link to category
+
+			WasteType battery = new WasteType();
+			battery.setTypeOfWaste("Batteries");
+			battery.setWasteExample("lithium-ion");
+			battery.setCategory(hazardous); // Link to category
+
+			WasteType yard_trimmings = new WasteType();
+			yard_trimmings.setTypeOfWaste("Yard trimmings");
+			yard_trimmings.setWasteExample("grass");
+			yard_trimmings.setCategory(organic); // Link to category
 
 			// Save the waste types
-			wasteTypeRepository.save(plastic);
-			wasteTypeRepository.save(glass);
+			wasteTypeRepository.save(battery);
+			wasteTypeRepository.save(yard_trimmings);
 			wasteTypeRepository.save(paper);
 
-//			WasteType glass_ = new WasteType("Glass", "Glass bottles");
 //
-//			DisposalGuideline glassDisposal = new DisposalGuideline();
-//			glassDisposal.setDisposalMethod("Throw in bin");
-//			glassDisposal.setLocation("Glass centres");
-//			glassDisposal.setCategory(recyclable);
-//			glassDisposal.setWasteType(glass);
+			DisposalGuideline batteryDisposal = new DisposalGuideline();
+			batteryDisposal.setDisposalMethod("Should not be thrown in regular trash");
+			batteryDisposal.setLocation("Dedicated recycling centers");
+			batteryDisposal.setWasteType(battery);
 
-//			disposalGuidelineRepository.save(glassDisposal);
+			disposalGuidelineRepository.save(batteryDisposal);
 
 		};
 	}

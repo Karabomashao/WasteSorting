@@ -18,13 +18,9 @@ public class DisposalGuideline {
     @JoinColumn(name = "waste_id", nullable = false)
     private WasteType wasteType;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
-
 
     // Getters and Setters
-    public long getDisposalGuidelineId() {
+    public int getDisposalGuidelineId() {
         return disposalGuidelineId;
     }
 
@@ -56,12 +52,5 @@ public class DisposalGuideline {
         this.wasteType = wasteType;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }
 

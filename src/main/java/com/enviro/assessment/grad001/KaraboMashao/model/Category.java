@@ -42,7 +42,4 @@ public class Category {
         this.description = description;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
     @RestController
-    @RequestMapping("/waste-types")
+    @RequestMapping("/api/waste-types")
     public class WasteTypeController {
 
         private final WasteTypeService wasteTypeService;

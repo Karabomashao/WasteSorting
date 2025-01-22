@@ -1,6 +1,5 @@
 package com.enviro.assessment.grad001.KaraboMashao.controller;
 
-import com.enviro.assessment.grad001.KaraboMashao.dto.DisposalGuidelineDTO;
 import com.enviro.assessment.grad001.KaraboMashao.model.Category;
 import com.enviro.assessment.grad001.KaraboMashao.model.DisposalGuideline;
 import com.enviro.assessment.grad001.KaraboMashao.service.DisposalGuidelineService;
@@ -23,26 +22,25 @@ public class DisposalGuidelineController {
         this.disposalGuidelineService = disposalGuidelineService;
     }
 
-    @Autowired
-    private DisposalGuidelineService service;
-
     // Get all disposal guidelines
-
     @GetMapping
-    public List<DisposalGuidelineDTO> getAllDisposalGuidelines() {
-        return service.findAllGuidelines();
+    public ResponseEntity<List<DisposalGuideline>> getAllDisposalGuidelines() {
+        List<DisposalGuideline> guidelines = disposalGuidelineService.findAllGuidelines();
+        return ResponseEntity.ok(guidelines);
     }
 
+    // Get a specific disposal guideline by ID
     @GetMapping("/{id}")
-    public DisposalGuidelineDTO getDisposalGuidelineById(@PathVariable int id) {
-        return service.findGuidelineById(id);
+    public ResponseEntity<DisposalGuideline> getDisposalGuidelineById(@PathVariable int id) {
+        DisposalGuideline guideline = disposalGuidelineService.findGuidelineById(id);
+        return ResponseEntity.ok(guideline);
     }
 
     // Create a new disposal guideline
     @PostMapping
-    public DisposalGuidelineDTO createDisposalGuideline(@RequestBody DisposalGuidelineDTO dto) {
-        DisposalGuideline guideline = service.mapToEntity(dto);
-        return service.mapToDto(service.createDisposalGuideline(guideline));
+    public ResponseEntity<DisposalGuideline> createDisposalGuideline(@RequestBody DisposalGuideline guideline) {
+        DisposalGuideline createdGuideline = disposalGuidelineService.createDisposalGuideline(guideline);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdGuideline);
     }
 
     // Update an existing disposal guideline
@@ -60,6 +58,4 @@ public class DisposalGuidelineController {
         disposalGuidelineService.deleteDisposalGuideline(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }
