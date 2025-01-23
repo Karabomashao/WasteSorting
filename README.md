@@ -78,7 +78,10 @@ POST /api//api/recycling-tips
   }
 }
 
+### Aditional info
 
+To run the application nevigate to com.enviro.assessment.grad001.KaraboMashao, select the Application class and then run the server.
+Note: port number = 8080
 
 
 
