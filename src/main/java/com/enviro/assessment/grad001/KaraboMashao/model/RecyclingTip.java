@@ -66,4 +66,7 @@ public class RecyclingTip {
     public void setWasteType(WasteType wasteType) {
         this.wasteType = wasteType;
     }
+
+    public void setId(int tipId) {
+    }
 }

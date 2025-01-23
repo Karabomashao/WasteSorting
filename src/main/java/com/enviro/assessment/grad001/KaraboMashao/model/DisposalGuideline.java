@@ -57,5 +57,7 @@ public class DisposalGuideline {
         this.wasteType = wasteType;
     }
 
+    public void setId(int guidelineId) {
+    }
 }
 
