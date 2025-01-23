@@ -3,9 +3,7 @@ package com.enviro.assessment.grad001.KaraboMashao.service;
 import com.enviro.assessment.grad001.KaraboMashao.exceptions.NotFoundExceptions;
 import com.enviro.assessment.grad001.KaraboMashao.model.Category;
 import com.enviro.assessment.grad001.KaraboMashao.repository.CategoryRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
