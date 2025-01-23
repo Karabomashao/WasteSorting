@@ -43,7 +43,7 @@ It supports CRUD operations and enforces validation rules to ensure data consist
 POST /api//api/categories
 
 {
-  "wasteCategory": "Recycling",
+  "wasteCategory": "Recyclable",
   "description": "Waste that can be reused"
 }
 
