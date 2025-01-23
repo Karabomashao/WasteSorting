@@ -65,4 +65,7 @@ public class WasteType {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public void setId(int i) {
+    }
 }
